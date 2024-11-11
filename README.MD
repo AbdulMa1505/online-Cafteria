@@ -51,9 +51,6 @@ The Online Cafeteria project is designed for cafeteria managers and customers al
 - **PHP**: Vanilla PHP for server-side logic, user authentication, and database operations.
 - **MySQL**: Database to store user information, orders, menu items, and more.
 
-## Screenshots
-
-*Include some screenshots of your project here, showing the main features and UI.*
 
 ## Installation
 

@@ -1,6 +1,6 @@
 <?php
-require 'includes/header.php';
-require 'includes/connect.php';
+require './includes/header.php';
+require './includes/connect.php';
 ?>
     <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(images/bg_1.jpg);">
@@ -19,7 +19,7 @@ require 'includes/connect.php';
         </div>
       </div>
 
-      <div class="slider-item" style="background-image: url(images/bg_2.jpg);">
+      <div class="slider-item" style="background-image: url(<?php echo APPURL; ?>/images/bg_2.jpg);">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center" data-scrollax-parent="true">
@@ -82,38 +82,38 @@ require 'includes/connect.php';
 	    		</div>
 	    		<div class="book p-4">
 	    			<h3>Book a Table</h3>
-	    			<form action="#" class="appointment-form">
+	    			<form action="<?php echo APPURL; ?>/booking/book.php" method="post" class="appointment-form">
 	    				<div class="d-md-flex">
 		    				<div class="form-group">
-		    					<input type="text" class="form-control" placeholder="First Name">
+		    					<input type="text" name="fname" class="form-control" placeholder="First Name">
 		    				</div>
 		    				<div class="form-group ml-md-4">
-		    					<input type="text" class="form-control" placeholder="Last Name">
+		    					<input type="text" name="lname" class="form-control" placeholder="Last Name">
 		    				</div>
 	    				</div>
 	    				<div class="d-md-flex">
 		    				<div class="form-group">
 		    					<div class="input-wrap">
 		            		<div class="icon"><span class="ion-md-calendar"></span></div>
-		            		<input type="text" class="form-control appointment_date" placeholder="Date">
+		            		<input type="text" name="date" class="form-control appointment_date" placeholder="Date">
 	            		</div>
 		    				</div>
 		    				<div class="form-group ml-md-4">
 		    					<div class="input-wrap">
 		            		<div class="icon"><span class="ion-ios-clock"></span></div>
-		            		<input type="text" class="form-control appointment_time" placeholder="Time">
+		            		<input type="text" name="time" class="form-control appointment_time" placeholder="Time">
 	            		</div>
 		    				</div>
 		    				<div class="form-group ml-md-4">
-		    					<input type="text" class="form-control" placeholder="Phone">
+		    					<input name="phone" type="text" class="form-control" placeholder="Phone">
 		    				</div>
 	    				</div>
 	    				<div class="d-md-flex">
 	    					<div class="form-group">
-		              <textarea name="" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
+		              <textarea name="message" id="" cols="30" rows="2" class="form-control" placeholder="Message"></textarea>
 		            </div>
 		            <div class="form-group ml-md-4">
-		              <input type="submit" value="Appointment" class="btn btn-white py-3 px-4">
+		              <button type="submit"  name="submit" class="btn btn-white py-3 px-4">Book a table</button>
 		            </div>
 	    				</div>
 	    			</form>
@@ -445,4 +445,4 @@ require 'includes/connect.php';
 		
 	
 
-    <?php require 'includes/footer.php' ?>
+	  <?php require './includes/footer.php';?>
