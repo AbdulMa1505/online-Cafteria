@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
         "password"=>$password
       ]);
       header("Location:login.php");
+      exit();
     }
     
 }

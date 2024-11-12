@@ -14,7 +14,7 @@ if (isset($_POST['submit'])) {
         $message = $_POST['message'];
         $user_id = $_SESSION['user_id'];
 
-        // Converting date to Y-m-d for comparison
+        
         $formattedDate = DateTime::createFromFormat('d/m/Y', $date);
         
         if ($formattedDate && $formattedDate->format('Y-m-d') >= date('Y-m-d')) {
@@ -22,13 +22,14 @@ if (isset($_POST['submit'])) {
             $stmt->execute([
                 ':fname' => $fname,
                 ':lname' => $lname,
-                ':date' => $formattedDate->format('Y-m-d'),  // Converting to standard format
+                ':date' => $formattedDate->format('Y-m-d'),  
                 ':time' => $time,
                 ':phone' => $phone,
                 ':message' => $message,
                 ':user_id' => $user_id
             ]);
             echo "<script>alert('Booked successfully')</script>";
+            header("Location:".APPURL."");
         } else {
             echo "<script>alert('Invalid date: date must not be in the past')</script>";
         }

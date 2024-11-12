@@ -32,6 +32,8 @@ The Online Cafeteria project is designed for cafeteria managers and customers al
 - **Add to Cart**: Add items to a cart, update quantities, and remove items as desired.
 - **Place Order**: Checkout process that captures order details and stores them in the database.
 - **Account Management**: User registration and login with password encryption.
+- **Single Product View**: Users can view detailed information about a specific product, including image, description, price, and size options
+- **Related Products**: When viewing a specific product, users are shown related products based on type, enhancing the shopping experience.
 
 ### Admin Dashboard
 - **Order Management**: View and update orders placed by users.
@@ -91,25 +93,31 @@ The Online Cafeteria project is designed for cafeteria managers and customers al
 
 3. **AJAX Functionality**:
    - Enjoy smooth interactions throughout the site, from adding items to the cart to managing the checkout process without full page reloads.
-
+4 New Folder - product/
+single.php: Page displaying details for a single product, including its name, description, price, image, and other details.
+## Contributing
+Contributions are welcome! Please open a pull request or issue to discuss your changes
 ## Folder Structure
 
 ```plaintext
 online-cafeteria/
-├──Coffeeshop/             #Main folder
-├── auth/                  # User authentication pages (login, register,logout)
-├── includes/              # Header, footer, and other reusable components
-├── css/                   # Custom styles and Bootstrap files
+├── Coffeeshop/              # Main folder
+├── auth/                    # User authentication pages (login, register, logout)
+├── bookings/                # User bookings pages (booking)
+├── includes/                # Header, footer, and other reusable components
+├── css/                     # Custom styles and Bootstrap files
 ├── fonts/                   # Custom fonts 
-├── js/                    # JavaScript, jQuery, and AJAX files
-├── scss/                   # Custom scss and Bootstrap files
-├── admin/                 # Admin dashboard files
-├── images/                # Images used in the project
-├── index.php              # Homepage
-├── cart.php               # Shopping cart page
-├── checkout.php           # Order checkout page
-├── menu.php               # Menu listing page
-├── services.php           # services listing page
-├── about.php              # about listing page
-├── contact.php            # Contact form page
-└── README.md              # Project documentation
+├── js/                      # JavaScript, jQuery, and AJAX files
+├── scss/                    # Custom scss and Bootstrap files
+├── admin/                   # Admin dashboard files
+├── images/                  # Images used in the project
+├── index.php                # Homepage
+├── cart.php                 # Shopping cart page
+├── checkout.php             # Order checkout page
+├── menu.php                 # Menu listing page
+├── services.php             # Services listing page
+├── about.php                # About page
+├── contact.php              # Contact form page
+├── product/                 # New folder containing single product view and related products
+│   ├── single.php           # Single product view
+└── README.md                # Project documentation
