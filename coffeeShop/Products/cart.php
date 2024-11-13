@@ -1,12 +1,11 @@
 <?php 
-require 'includes/header.php';
-require 'includes/connect.php';
+require '../includes/header.php';
+require '../includes/connect.php';
 ?>
-    <!-- END nav -->
 
     <section class="home-slider owl-carousel">
 
-      <div class="slider-item" style="background-image: url(images/bg_3.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item" style="background-image: url(<?php echo APPURL;?>/images/bg_3.jpg);" data-stellar-background-ratio="0.5">
       	<div class="overlay"></div>
         <div class="container">
           <div class="row slider-text justify-content-center align-items-center">
@@ -41,7 +40,7 @@ require 'includes/connect.php';
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/menu-2.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(<?php echo APPURL;?>/images/menu-2.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Creamy Latte Coffee</h3>
@@ -62,7 +61,7 @@ require 'includes/connect.php';
 						      <tr class="text-center">
 						        <td class="product-remove"><a href="#"><span class="icon-close"></span></a></td>
 						        
-						        <td class="image-prod"><div class="img" style="background-image:url(images/dish-2.jpg);"></div></td>
+						        <td class="image-prod"><div class="img" style="background-image:url(<?php echo APPURL;?>/images/dish-2.jpg);"></div></td>
 						        
 						        <td class="product-name">
 						        	<h3>Grilled Ribs Beef</h3>
@@ -124,7 +123,7 @@ require 'includes/connect.php';
         <div class="row">
         	<div class="col-md-3">
         		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(images/menu-1.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url(<?php echo APPURL;?>/images/menu-1.jpg);"></a>
     					<div class="text text-center pt-4">
     						<h3><a href="#">Coffee Capuccino</a></h3>
     						<p>A small river named Duden flows by their place and supplies</p>
@@ -135,7 +134,7 @@ require 'includes/connect.php';
         	</div>
         	<div class="col-md-3">
         		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(images/menu-2.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url(<?php echo APPURL;?>/images/menu-2.jpg);"></a>
     					<div class="text text-center pt-4">
     						<h3><a href="#">Coffee Capuccino</a></h3>
     						<p>A small river named Duden flows by their place and supplies</p>
@@ -146,7 +145,7 @@ require 'includes/connect.php';
         	</div>
         	<div class="col-md-3">
         		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(images/menu-3.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url(<?php echo APPURL;?>/images/menu-3.jpg);"></a>
     					<div class="text text-center pt-4">
     						<h3><a href="#">Coffee Capuccino</a></h3>
     						<p>A small river named Duden flows by their place and supplies</p>
@@ -157,7 +156,7 @@ require 'includes/connect.php';
         	</div>
         	<div class="col-md-3">
         		<div class="menu-entry">
-    					<a href="#" class="img" style="background-image: url(images/menu-4.jpg);"></a>
+    					<a href="#" class="img" style="background-image: url(<?php echo APPURL;?>/images/menu-4.jpg);"></a>
     					<div class="text text-center pt-4">
     						<h3><a href="#">Coffee Capuccino</a></h3>
     						<p>A small river named Duden flows by their place and supplies</p>
@@ -170,4 +169,4 @@ require 'includes/connect.php';
     	</div>
     </section>
 
-  <?php require 'includes/footer.php';?>
+  <?php require '../includes/footer.php';?>

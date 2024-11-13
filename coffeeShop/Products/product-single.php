@@ -2,11 +2,27 @@
 require '../includes/header.php';
 require '../includes/connect.php';
 
-
+// add to cart
+if(isset($_POST['submit'])){
+	$name=$_POST['name'];
+	$image=$_POST['image'];
+	$price=$_POST['price'];
+	$description=$_POST['description'];
+	$user_id=$_SESSION['user_id'];
+	$insert=$conn->prepare("INSERT INTO cart(name,image,price,description,quantity,user_id) VALUES(:name,:image,:price,:description,:quantity,:user_id)");
+	$insert->execute([
+		":name"=>$name,
+		":image"=>$image,
+		":price"=>$price,
+		":description"=>$description,
+		":quantity"=>$quantity,
+		":user_id"=>$user_id
+	]);
+}
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    
-    
+	// echo "Product ID from URL: " . htmlspecialchars($id);
+    // single product
     $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = :id");
     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
     $stmt->execute();
@@ -25,15 +41,19 @@ if (isset($_GET['id'])) {
         $relatedProducts = $relatedProduct->fetchAll(PDO::FETCH_OBJ);
         
     } else {
-        // Redirect if the product is not found
+        
         echo "<script>alert('Product not found.'); window.location.href = '" . APPURL . "/index.php';</script>";
         exit();
     }
+		
 } else {
-    // Redirect if no product ID is specified
+    
     echo "<script>alert('No product specified.'); window.location.href = '" . APPURL . "/index.php';</script>";
     exit();
+
+
 }
+
 ?>
  
 
@@ -78,20 +98,28 @@ if (isset($_GET['id'])) {
 							</div>
 							<div class="w-100"></div>
 							<div class="input-group col-md-6 d-flex mb-3">
-	             	<span class="input-group-btn mr-2">
-	                	<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
-	                   <i class="icon-minus"></i>
-	                	</button>
+	             			<span class="input-group-btn mr-2">
+								<button type="button" class="quantity-left-minus btn"  data-type="minus" data-field="">
+								<i class="icon-minus"></i>
+								</button>
 	            		</span>
-	             	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
-	             	<span class="input-group-btn ml-2">
-	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
-	                     <i class="icon-plus"></i>
-	                 </button>
-	             	</span>
-	          	</div>
-          	</div>
-          	<p><a href="cart.html" class="btn btn-primary py-3 px-5">Add to Cart</a></p>
+						<form action="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $singleProduct->id;?>" method="post">
+									<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+									<span class="input-group-btn ml-2">
+										<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
+										<i class="icon-plus"></i>
+										</button>
+									</span>
+								</div>
+							</div>
+			
+							<input type="text" name="name" value="<?php echo $singleProduct->name;?>" >
+							<input type="text" name="image" value="<?php echo $singleProduct->image;?>" >
+							<input type="text" name="price" value="<?php echo $singleProduct->price;?>" >
+							<input type="text" name="description" value="<?php echo $singleProduct->description;?>" >
+							<p><button name="submit" type="submit"  class="btn btn-primary py-3 px-5">Add to Cart</button></p>
+						</form>
+          	
     			</div>
     		</div>
     	</div>
@@ -110,12 +138,12 @@ if (isset($_GET['id'])) {
 			<?php foreach($relatedProducts as $type):?>
         	<div class="col-md-3">
         		<div class="menu-entry">
-    					<a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $type->id;?>" class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $type->image;?>);"></a>
+    					<a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $type->product_id;?>" class="img" style="background-image: url(<?php echo APPURL; ?>/images/<?php echo $type->image;?>);"></a>
     					<div class="text text-center pt-4">
-    						<h3><a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $type->id;?>"><?php echo $type->name;?></a></h3>
+    						<h3><a href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $type->product_id;?>"><?php echo $type->name;?></a></h3>
     						<p><?php echo $type->description;?></p>
     						<p class="price"><span>$<?php echo $type->price;?></span></p>
-    						<p><a href="#" class="btn btn-primary btn-outline-primary">Add to Cart</a></p>
+    						<p><a target="_blank" href="<?php echo APPURL; ?>/products/product-single.php?id=<?php echo $type->product_id;?>" class="btn btn-primary btn-outline-primary">show</a></p>
     					</div>
     				</div>
         	</div>
